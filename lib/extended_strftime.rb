@@ -1,7 +1,10 @@
 # ExtendedStrftime
-module GeoffGarside
-  module Extensions
+module GeoffGarside #:nodoc:
+  module Extensions #:nodoc:
     module Strftime
+      # Extended strftime method. Accepts some additional formatting
+      # tokens over those parsed by the standard strftime functions.
+      # * %o - Token %d (no leading zero's) with the 'st', 'nd', 'rd', 'th' suffix
       def estrftime(fmt='%F')
         o = ''
         fmt.scan(/%[EO]?.|./mo) do |c|
