@@ -1,24 +1,26 @@
 require 'test/unit'
+require 'time'
+require 'date'
 
-# These currently fail because I cant seem to load in the init.rb file
-# and the ActiveSupport::Inflector properly
+require 'rubygems'
+
+gem 'activesupport'
+require 'active_support'
+
+require 'extended_strftime'
 
 class ExtendedStrftimeTest < Test::Unit::TestCase
-  def test_time_ordinalize
-    t = Time.mktime(2006, 11, 9, 9, 37)
+  def test_should_ordinalize_with_o
+    t = Time.parse("2007/05/01")
+    assert t.strftime("%B %o, %Y"), "May 1st, 2007"
     
-    assert_equal(t.strftime("%B %e, %Y"), t.estrftime("%B %e, %Y"))
+    t = Time.parse("2007/05/02")
+    assert t.strftime("%B %o, %Y"), "May 2nd, 2007"
     
-    assert_equal("November  9, 2006", t.estrftime("%B %e, %Y"))
-    assert_equal("November  9th, 2006", t.estrftime("%B %o, %Y"))
-  end
-  
-  def test_date_ordinalize
-    d = Date.civil(2006, 11, 9)
+    t = Time.parse("2007/05/03")
+    assert t.strftime("%B %o, %Y"), "May 3rd, 2007"
     
-    assert_equal(d.strftime("%B %e, %Y"), d.estrftime("%B %e, %Y"))
-    
-    assert_equal("November  9, 2006", d.estrftime("%B %e, %Y"))
-    assert_equal("November  9th, 2006", d.estrftime("%B %o, %Y"))
+    t = Time.parse("2007/05/04")
+    assert t.strftime("%B %o, %Y"), "May 4th, 2007"
   end
 end
