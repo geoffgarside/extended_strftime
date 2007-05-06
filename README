@@ -1,0 +1,16 @@
+ExtendedStrftime
+================
+
+Adds some additional formatters to strftime. 
+
+  * %o - Same as %d but with an ordinalized suffix (st, nd, rd, th)
+
+
+Example
+=======
+
+t = Time.now
+t.strftime("%B %o, %Y") => "May 6th, 2007"
+
+
+Copyright (c) 2007 Geoff Garside, released under the MIT license
