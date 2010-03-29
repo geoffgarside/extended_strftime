@@ -14,7 +14,7 @@ module GeoffGarside #:nodoc:
         fmt.scan(/%[EO]?.|./mo) do |c|
           cc = c.sub(/\A%[EO]?(.)\z/mo, '%\\1')
           case cc
-          when '%o'; o << Inflector.ordinalize(mday)
+          when '%o'; o << ActiveSupport::Inflector.ordinalize(mday)
           else
             o << c
           end
